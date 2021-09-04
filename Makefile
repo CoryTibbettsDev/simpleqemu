@@ -1,4 +1,4 @@
-PROGRAM_NAME := qemuhelper
+PROGRAM_NAME := simpleqemu
 
 PREFIX ?= /usr/local
 DESTDIR ?=
