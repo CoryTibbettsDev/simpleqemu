@@ -4,5 +4,5 @@ Turns out someone already made this, though it seems to rely on qemu-virgil.<br 
 [Quickemu](https://github.com/wimpysworld/quickemu)
 
 # Useful Links
-[How To Enable Sound and Where I Found Quickemu](https://askubuntu.com/questions/1314825/how-to-enable-sound-in-qemu)
-[Microphone Pass Through To VM](https://www.reddit.com/r/VFIO/comments/5ffu3s/microphone_in_passed_through_vm/)
+[How To Enable Sound and Where I Found Quickemu](https://askubuntu.com/questions/1314825/how-to-enable-sound-in-qemu)<br  />
+[Microphone Pass Through To VM](https://www.reddit.com/r/VFIO/comments/5ffu3s/microphone_in_passed_through_vm/)<br  />
