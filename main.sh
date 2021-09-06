@@ -37,11 +37,11 @@ EOF
 }
 
 # Parse command-line parameters
-if [ $# -lt 1 ]; then
+if [ "$#" -lt 1 ]; then
 	usage
 	exit 0
 else
-	while [ $# -gt 0 ]; do
+	while [ "$#" -gt 0 ]; do
 		case "${1}" in
 			-h|--help)
 				usage
@@ -108,7 +108,7 @@ fi
 # Options must be set after all options have had a chance to change from
 # command line parameters
 # full_cmd="${qemu_cmd} ${boot_options} ${cpu_options} ${memory_options} ${video_options} -drive file=${drive_file}"
-full_cmd="${qemu_cmd} ${boot_options} ${cpu_options} ${memory_options} ${video_options} -blockdev driver=file,node-name=disk,filename=${drive_file}"
+full_cmd="${qemu_cmd} ${boot_options} ${cpu_options} ${memory_options} ${video_options} -drive file=${drive_file}"
 
 [ "${kvm}" = true ] && full_cmd="${full_cmd} -enable-kvm"
 [ -n "${cpu}" ] && cpu_options="-cpu ${cpu} ${cpu_options}"

@@ -1,4 +1,4 @@
-PROGRAM_NAME := simpleqemu
+PROG := simpleqemu
 
 PREFIX ?= /usr/local
 DESTDIR ?=
@@ -11,7 +11,7 @@ all:
 	@echo "This is a shell script, so there is nothing to do. Try \"make install\" instead."
 
 install:
-	@install -v main.sh $(DESTDIR)$(BINDIR)/$(PROGRAM_NAME)
+	@install -v main.sh $(DESTDIR)$(BINDIR)/$(PROG)
 
 uninstall:
-	@rm -vf "$(DESTDIR)$(BINDIR)/$(PROGRAM_NAME)"
+	@rm -vf $(DESTDIR)$(BINDIR)/$(PROG)
