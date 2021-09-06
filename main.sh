@@ -2,8 +2,6 @@
 
 # Create image with the "qemu-img create" command
 
-program_name="$0"
-
 # Default variables
 qemu_cmd="qemu-system-x86_64"
 
