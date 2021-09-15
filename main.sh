@@ -128,4 +128,4 @@ full_cmd="${qemu_cmd}"
 [ -n "${extra_options}" ] && full_cmd="${full_cmd} ${extra_options}"
 
 printf "====\nGenerated QEMU command is:\n%s\n====\n" "${full_cmd}"
-${full_cmd}
+eval "${full_cmd}"
