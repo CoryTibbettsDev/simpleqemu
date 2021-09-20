@@ -3,7 +3,6 @@ PROG := simpleqemu
 PREFIX ?= /usr/local
 DESTDIR ?=
 BINDIR ?= $(PREFIX)/bin
-MANDIR ?= $(PREFIX)/share/man
 
 .PHONY: all install uninstall
 

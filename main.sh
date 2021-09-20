@@ -50,6 +50,10 @@ else
 				extra_options="${extra_options} ${2}"
 				shift; shift
 				;;
+			-b|--boot_options)
+				boot_options="${2}"
+				shift; shift
+				;;
 			-d|--drive-file)
 				drive_file="${2}"
 				shift; shift
