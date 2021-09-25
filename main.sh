@@ -122,7 +122,7 @@ full_cmd="${qemu_cmd}"
 [ -n "${cdrom_file}" ] && full_cmd="${full_cmd} -cdrom ${cdrom_file}"
 
 [ "${kvm}" -eq 1 ] && full_cmd="${full_cmd} -enable-kvm"
-[ -n "${cpu}" ] && full_cmd="${full_cmd} -cpu ${cpu} ${cpu_options}"
+[ -n "${cpu}" ] && full_cmd="${full_cmd} -cpu ${cpu}"
 
 [ "${port_forwarding}" -eq 1 ] &&
 	full_cmd="${full_cmd} -netdev user,id=net0,hostfwd=tcp::${forward_port}-:22 -device e1000,netdev=net0"
