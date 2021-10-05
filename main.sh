@@ -2,6 +2,8 @@
 
 # Create image with the "qemu-img create" command
 
+prog="simpleqemu"
+
 # Default variables
 qemu_cmd="qemu-system-x86_64"
 
@@ -31,7 +33,7 @@ extra_options=
 
 usage() {
 	cat << EOF
-Example usage: simpleqemu --drive-file example.qcow2 --cdrom example.iso
+Example usage: ${prog} --drive-file example.qcow2
 EOF
 }
 
@@ -67,7 +69,8 @@ else
 				shift; shift
 				;;
 			--cpu)
-				# Only change cpu if it is null
+				# Only change cpu if it is null so --enable-kvm setting cpu to
+				# host is not overriden
 				cpu="${cpu:-${2}}"
 				shift; shift
 				;;
@@ -117,8 +120,13 @@ full_cmd="${qemu_cmd}"
 [ -n "${video_options}" ] && full_cmd="${full_cmd} ${video_options}"
 [ -n "${memory_options}" ] && full_cmd="${full_cmd} ${memory_options}"
 
-[ -n "${drive_file}" ] &&
+if [ -n "${drive_file}" ]; then
 	full_cmd="${full_cmd} -drive file=${drive_file},format=raw,index=0,media=disk"
+else
+	printf "ERROR: need a non null drive file\n" "${1}"
+	usage
+	exit 1
+fi
 [ -n "${cdrom_file}" ] && full_cmd="${full_cmd} -cdrom ${cdrom_file}"
 
 [ "${kvm}" -eq 1 ] && full_cmd="${full_cmd} -enable-kvm"
@@ -131,5 +139,5 @@ full_cmd="${qemu_cmd}"
 
 [ -n "${extra_options}" ] && full_cmd="${full_cmd} ${extra_options}"
 
-printf "====\nGenerated QEMU command is:\n%s\n====\n" "${full_cmd}"
+printf "=====\nGenerated QEMU command is:\n%s\n=====\n" "${full_cmd}"
 eval "${full_cmd}"
