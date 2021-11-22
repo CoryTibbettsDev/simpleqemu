@@ -1,16 +1,18 @@
 PROG := simpleqemu
 
-PREFIX ?= /usr/local
 DESTDIR ?=
-BINDIR ?= $(PREFIX)/bin
+PREFIX ?= ${DESTDIR}/usr/local
+BINDIR ?= ${PREFIX}/bin
+
+RM ?= rm -f
 
 .PHONY: all install uninstall
 
 all:
-	@echo "This is a shell script, so there is nothing to do. Try \"make install\" instead."
+	@printf "This is a shell script, so there is nothing to do. Try \"make install\" instead.\n"
 
 install:
-	@install -v main.sh $(DESTDIR)$(BINDIR)/$(PROG)
+	install -v main.sh ${BINDIR}/${PROG}
 
 uninstall:
-	@rm -vf $(DESTDIR)$(BINDIR)/$(PROG)
+	${RM} ${BINDIR}/${PROG}

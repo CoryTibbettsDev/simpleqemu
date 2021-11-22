@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# Create image with the "qemu-img create" command
-
 prog="simpleqemu"
 
 # Default variables
