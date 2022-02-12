@@ -94,6 +94,7 @@ else
 				;;
 			-p|--forwarding-port)
 				forward_port="${2}"
+				port_forwarding=1
 				shift; shift
 				;;
 			-k|--enable-kvm)
