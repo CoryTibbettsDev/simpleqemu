@@ -27,6 +27,8 @@ forward_port=2222
 qemu_monitoring=0
 monitor_port=55555
 
+web_server=0
+
 extra_options=
 
 usage() {
@@ -102,6 +104,10 @@ else
 				cpu="host"
 				shift
 				;;
+			-w|--web-server)
+				web_server=1
+				shift
+				;;
 			*)
 				printf "ERROR: \"%s\" is not a supported parameter\n" "${1}"
 				usage
@@ -135,6 +141,8 @@ fi
 	full_cmd="${full_cmd} -netdev user,id=net0,hostfwd=tcp::${forward_port}-:22 -device e1000,netdev=net0"
 [ "${qemu_monitoring}" -eq 1 ] &&
 	full_cmd="${full_cmd} -monitor tcp:127.0.0.1:${monitor_port},server,nowait"
+[ "${web_server}" -eq 1 ] &&
+	full_cmd="${full_cmd} -netdev user,id=net0,hostfwd=tcp::8080-:80 -device e1000,netdev=net0"
 
 [ -n "${extra_options}" ] && full_cmd="${full_cmd} ${extra_options}"
 
